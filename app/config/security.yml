@@ -1,13 +1,25 @@
 security:
+#    encoders:
+#        AppBundle\Entity\User:
+#            algorithm: bcrypt
+#
+#    providers:
+#        entity_provider:
+#            entity:
+#                class: AppBundle:User
+#                property: username
     encoders:
-        AppBundle\Entity\User:
-            algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
 
     providers:
-        entity_provider:
-            entity:
-                class: AppBundle:User
-                property: username
+        in_memory:
+            memory:
+                users:
+                    user:  { password: password, roles: [ 'ROLE_USER' ] }
+                    admin: { password: password, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         dev:
@@ -23,21 +35,21 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
-        register:
-            pattern:  ^/register
-            stateless: true
-            anonymous: true
+#        register:
+#            pattern:  ^/register
+#            stateless: true
+#            anonymous: true
 
-        api:
-            pattern:  ^/api
-            stateless: true
-            anonymous: false
-            provider: entity_provider
-            guard:
-                authenticators:
-                    - app.jwt_token_authenticator
+#        api:
+#            pattern:  ^/api
+#            stateless: true
+#            anonymous: false
+#            provider: entity_provider
+#            guard:
+#                authenticators:
+#                    - app.jwt_token_authenticator
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+       # - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
