@@ -45,6 +45,11 @@ $ curl -X POST -H "Content-Type: application/json" http://localhost:8000/login_c
 -> { "token": "[TOKEN]" }  
 ```
 
+```
+curl -X POST -H "Content-Type: application/json" http://localhost:8000/login_check -d '{"username":"admin","password":"password"}'
+-> { "token": "[TOKEN]" }  
+```
+
 Access a secured route:
 ```
 $ curl -H "Authorization: Bearer [TOKEN]" http://localhost:8000/api
