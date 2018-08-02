@@ -16,37 +16,29 @@ Clone the project:
 ```sh
 $ git clone https://github.com/chalasr/lexik-jwt-authentication-sandbox
 $ cd lexik-jwt-authentication-sandbox
-$ git checkout json-login
+$ git checkout symfony-3.4
 ```
 
-Create the database schema:
-```sh
-$ php bin/console doctrine:database:create
-$ php bin/console doctrine:schema:update --force
-```
 
 Usage
 ------
 
 Run the web server:
 ```sh
-$ php bin/console server:run
+$ php bin/console server:run 0.0.0.0:8000
 ```
 
-Register a new user:
-```
-$ curl -X POST http://localhost:8000/register -d _username=johndoe -d _password=test
--> User johndoe successfully created
-```
 
 Get a JWT token:
+
+
 ```
-$ curl -X POST -H "Content-Type: application/json" http://localhost:8000/login_check -d '{"username":"johndoe","password":"test"}'
+curl -X POST -H "Content-Type: application/json" http://localhost:8000/login_check -d '{"username":"admin","password":"password"}'
 -> { "token": "[TOKEN]" }  
 ```
 
 Access a secured route:
 ```
 $ curl -H "Authorization: Bearer [TOKEN]" http://localhost:8000/api
--> Logged in as johndoe
+-> Logged in as admin
 ```
