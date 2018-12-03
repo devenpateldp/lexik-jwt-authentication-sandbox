@@ -25,7 +25,7 @@ Usage
 
 Run the web server:
 ```sh
-$ php bin/console server:run 0.0.0.0:8000
+$ php bin/console server:run 0.0.0.0:8080
 ```
 
 
@@ -33,7 +33,7 @@ Get a JWT token:
 
 
 ```
-curl -X POST -H "Content-Type: application/json" http://localhost:8000/api/login_check -d '{"username":"admin","password":"password"}'
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/api/login_check -d '{"username":"admin","password":"password"}'
 -> { "token": "[TOKEN]" }  
 ```
 
