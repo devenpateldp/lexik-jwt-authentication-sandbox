@@ -17,6 +17,8 @@ Clone the project:
 $ git clone https://github.com/chalasr/lexik-jwt-authentication-sandbox
 $ cd lexik-jwt-authentication-sandbox
 $ git checkout symfony-3.4
+$ composer install
+
 ```
 
 
