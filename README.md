@@ -16,7 +16,6 @@ Clone the project:
 ```sh
 $ git clone https://github.com/chalasr/lexik-jwt-authentication-sandbox
 $ cd lexik-jwt-authentication-sandbox
-$ git checkout flex
 ```
 
 Create the database schema:
